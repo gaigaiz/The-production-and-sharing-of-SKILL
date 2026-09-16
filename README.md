@@ -1,6 +1,8 @@
-#  自定义 Skill 集合
+# 通用 AI 智能体 Skill 集合
 
-本项目是一组为AI办公模式设计的自定义 Skill，覆盖**项目从零构建、执行计划生成、GitHub 首次发布**三个标准化工作流，帮助 AI 在执行相关任务时遵循统一、可验收的流程规范。
+本项目是一组通用的 AI 智能体自定义 Skill，采用 `SKILL.md` 标准格式定义，覆盖**项目从零构建、执行计划生成、GitHub 首次发布**三个标准化工作流，帮助 AI 在执行相关任务时遵循统一、可验收的流程规范。
+
+适用于所有支持 `SKILL.md` / 插件机制的 AI 智能体平台，包括但不限于豆包（Doubao）、Claude、Cursor、Coze、Dify、LangChain 类 Agent 框架等。
 
 ## 项目解决什么问题
 
@@ -37,25 +39,35 @@
 ## 安装方法
 
 ### 环境要求
-- 已安装豆包（Doubao）客户端并启用办公模式 / Agent 模式
+- 任意支持 `SKILL.md` 格式或自定义插件/Skill 机制的 AI 智能体平台
 - 操作系统：Windows / macOS / Linux（Skill 本身为 Markdown 定义，跨平台）
 - `github-project-publisher` Skill 执行时需本地已安装 Git 和 GitHub CLI（`gh`）
 
 ### 安装步骤
+
 1. 克隆或下载本仓库到本地：
    ```bash
-   git clone <仓库地址>
+   git clone https://github.com/gaigaiz/The-production-and-sharing-of-SKILL.git
    ```
-2. 将需要使用的 Skill 文件夹复制到豆包的用户 Skill 目录下。常见路径包括：
+
+2. 将需要使用的 Skill 文件夹复制到目标智能体平台对应的 Skill / 插件目录。以下为常见平台示例：
+
+   **豆包（Doubao）：**
    - Windows：`%USERPROFILE%\AppData\Local\Doubao\User Data\Default\.doubao\agent_mode\workspace\.user_skills\`
-   - 或豆包客户端设置中指定的自定义 Skill 目录
-3. 复制后重启豆包客户端（或新开会话），Skill 即会被自动识别和加载。
+   - 或客户端设置中指定的自定义 Skill 目录
+
+   **其他平台：**
+   - Claude / Cursor：放入对应插件或自定义指令目录
+   - Coze / Dify：通过平台的插件/Skill 上传功能导入
+   - 自研 Agent 框架：将 `SKILL.md` 作为系统提示词或工具定义加载
+
+3. 复制后重启对应客户端或新开会话，Skill 即会被识别和加载。
 
 > 每个 Skill 文件夹内需包含 `SKILL.md` 主文件；带 `references/` 子目录的 Skill 需一并复制，否则参考模板无法读取。
 
 ## 使用方法
 
-Skill 加载后，在豆包对话中通过自然语言触发即可，无需手动调用命令。
+Skill 加载后，在对应智能体的对话中通过自然语言触发即可，无需手动调用命令。
 
 | Skill | 触发说法示例 |
 |-------|-------------|
@@ -118,5 +130,11 @@ Skill 加载后，在豆包对话中通过自然语言触发即可，无需手�
 │   └── SKILL.md
 ├── project-builder-Skill作用总结.md
 ├── project-execution-planner-Skill作用总结.md
-└── github-project-publisher-Skill作用总结.md
+├── github-project-publisher-Skill作用总结.md
+├── README.md
+└── LICENSE
 ```
+
+## License
+
+MIT License
